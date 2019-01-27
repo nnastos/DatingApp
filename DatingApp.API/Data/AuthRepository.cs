@@ -16,22 +16,19 @@ namespace DatingApp.API.Data
         {
             var user = await _context.Users.FirstOrDefaultAsync(x => x.Username == username);
 
-            if (user == null)
-            {
-                return null;
-            }
+            if (user == null)            
+                return null;            
 
-            if (!VerfyPasswordHash(password,user.PasswordHash,user.PasswordSalt))
-            {
+            if (!VerfyPasswordHash(password,user.PasswordHash,user.PasswordSalt))            
                 return null;
-            }
+            
             return user;
         }
 
         private bool VerfyPasswordHash(string password, byte[] passwordhash, byte[] passwordSalt)
         {
-             using(var hmac = new System.Security.Cryptography.HMACSHA512())
-            {                
+             using(var hmac = new System.Security.Cryptography.HMACSHA512(passwordSalt))
+            {                 
                 var computeHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
                 for (int i = 0; i < computeHash.Length; i++)
                 {
