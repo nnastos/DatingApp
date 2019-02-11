@@ -12,7 +12,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 
 namespace DatingApp.API.Controllers
-{    
+{
     [Route("api/[controller]")]
     //ApiController make us to get validations without using [FromBody]
     [ApiController]
@@ -82,7 +82,6 @@ namespace DatingApp.API.Controllers
             {
                 token = tokenHandler.WriteToken(token)
             });
-
         }
     }
 }
