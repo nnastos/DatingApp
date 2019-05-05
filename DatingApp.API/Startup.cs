@@ -38,7 +38,7 @@ namespace DatingApp.API
         {            
             services.AddScoped<DbContext, DataContext>();       
             services.AddDbContext<DataContext>(x => x.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));              
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
                 .AddJsonOptions(opt => {
                     opt.SerializerSettings.ReferenceLoopHandling = 
                      Newtonsoft.Json.ReferenceLoopHandling.Ignore;
@@ -90,7 +90,7 @@ namespace DatingApp.API
             // app.UseHttpsRedirection();
             // when we start our application the method in Seed.cs will be called and seed data in our database
             // when we will need to seed data again we uncomment the below line and run dotnet run
-            // seeder.SeedUsers();
+            seeder.SeedUsers();
             app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             app.UseAuthentication();
             app.UseMvc();
