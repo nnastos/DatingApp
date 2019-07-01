@@ -20,6 +20,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Http;
 using DatingApp.API.Helpers;
+using AutoMapper;
 
 namespace DatingApp.API
 {
@@ -36,14 +37,16 @@ namespace DatingApp.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {            
-            services.AddScoped<DbContext, DataContext>();       
+            services.AddScoped<DbContext, DataContext>();  
+            // Inject the service in the Users Controller.
+            services.AddAutoMapper();     
             services.AddDbContext<DataContext>(x => x.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));              
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
                 .AddJsonOptions(opt => {
                     opt.SerializerSettings.ReferenceLoopHandling = 
                      Newtonsoft.Json.ReferenceLoopHandling.Ignore;
                 });
-            services.AddCors();
+            services.AddCors();        
             services.AddTransient<Seed>();
             //We add this service which is the repository that we created in the folder Data        
             services.AddScoped<IAuthRepository,AuthRepository>();
@@ -90,7 +93,7 @@ namespace DatingApp.API
             // app.UseHttpsRedirection();
             // when we start our application the method in Seed.cs will be called and seed data in our database
             // when we will need to seed data again we uncomment the below line and run dotnet run
-            seeder.SeedUsers();
+            // seeder.SeedUsers();
             app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             app.UseAuthentication();
             app.UseMvc();
