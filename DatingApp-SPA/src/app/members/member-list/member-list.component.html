@@ -1,0 +1,9 @@
+<div class="container mt-5">
+  <div class="row">
+    <!-- we are going to use a child component from member card html component -->
+    <div *ngFor="let user of users" class="col-lg-2 col-md-3 col-sm-6">
+      <!-- we are passing user as input in app-member-card component below -->
+      <app-member-card [user]="user"></app-member-card>
+    </div>
+  </div>
+</div>

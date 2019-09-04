@@ -24,7 +24,7 @@ public AutoMapperProfiles()
                     .ForMember(dest => dest.Age , opt => {
                         opt.MapFrom(d => d.DateOfBirth.CalculateAge());
                     });
-                CreateMap<Photos, PhotosForDetailedDto>();
+                CreateMap<Photo, PhotosForDetailedDto>();
             }
     }
 }

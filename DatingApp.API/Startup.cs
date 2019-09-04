@@ -38,8 +38,8 @@ namespace DatingApp.API
         public void ConfigureServices(IServiceCollection services)
         {            
             services.AddScoped<DbContext, DataContext>();  
-            // Inject the service in the Users Controller.
-            services.AddAutoMapper();     
+            // Inject the service in the Users Controller.            
+            services.AddAutoMapper(typeof(Startup));             
             services.AddDbContext<DataContext>(x => x.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));              
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
                 .AddJsonOptions(opt => {
