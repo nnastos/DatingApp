@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\DatingApp.API"
+    "\\DatingApp.API",
+    "\\DatingApp.API\\Controllers"
   ],
-  "SelectedNode": "\\DatingApp.API\\Startup.cs",
+  "SelectedNode": "\\DatingApp.API\\Controllers\\AuthController.cs",
   "PreviewInSolutionExplorer": false
 }
