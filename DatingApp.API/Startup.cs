@@ -46,7 +46,9 @@ namespace DatingApp.API
                     opt.SerializerSettings.ReferenceLoopHandling = 
                      Newtonsoft.Json.ReferenceLoopHandling.Ignore;
                 });
-            services.AddCors();        
+            services.AddCors();    
+            // cloudinary configuration it is setup in appsettings and helpers.  
+            services.Configure<CloudinarySettings>(Configuration.GetSection("CloudinarySettings"));
             services.AddTransient<Seed>();
             //We add this service which is the repository that we created in the folder Data        
             services.AddScoped<IAuthRepository,AuthRepository>();

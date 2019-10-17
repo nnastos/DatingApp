@@ -40,5 +40,12 @@ namespace DatingApp.API.Data
             // if changes are more than 0 then it will return true else it will return false
             return await _context.SaveChangesAsync() > 0;
         }
+
+
+        public async Task<Photo> GetPhoto(int id)
+        {
+            var photo = await _context.Photos.FirstOrDefaultAsync(p => p.Id == id);
+            return photo;
+        }
     }
 }
