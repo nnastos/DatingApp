@@ -8,7 +8,7 @@ namespace DatingApp.API.Models
         public string Url { get; set; }
         public string Description { get; set; }
         public DateTime Dateadded { get; set; }
-        public bool IsMain { get; set; }
+        public bool isMain { get; set; }
 
         // publicid from cloudinary.
         public string PublicId { get; set; }

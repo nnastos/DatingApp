@@ -70,7 +70,7 @@ namespace DatingApp.API.Migrations
                     Url = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
                     Dateadded = table.Column<DateTime>(nullable: false),
-                    IsMain = table.Column<bool>(nullable: false),
+                    isMain = table.Column<bool>(nullable: false),
                     UserId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>

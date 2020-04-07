@@ -41,12 +41,12 @@ namespace DatingApp.API
             // Inject the service in the Users Controller.            
             services.AddAutoMapper(typeof(Startup));             
             services.AddDbContext<DataContext>(x => x.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));              
+            services.AddCors(); 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
                 .AddJsonOptions(opt => {
                     opt.SerializerSettings.ReferenceLoopHandling = 
                      Newtonsoft.Json.ReferenceLoopHandling.Ignore;
-                });
-            services.AddCors();    
+                });            
             // cloudinary configuration it is setup in appsettings and helpers.  
             services.Configure<CloudinarySettings>(Configuration.GetSection("CloudinarySettings"));
             services.AddTransient<Seed>();
