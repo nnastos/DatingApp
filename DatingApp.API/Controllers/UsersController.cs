@@ -7,9 +7,14 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using System;
+using DatingApp.API.Helpers;
 
 namespace DatingApp.API.Controllers
 {
+
+    //service for update last active
+    //any time methods will be called then we call the LogUserActivity
+    [ServiceFilter(typeof(LogUserActivity))]
     // this will return our users, so it need anyone to be 
     // autorized.
     [Authorize]
